@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nombres = ["Anibal", "Oscar", "Ramon", "Cecilia", "Mariano", "Antonio"]; 
+    </script>
+
+    <div>
+        <script>
+            document.write(nombres);      
+        </script>      
+    </div>
+
+    <div>
+        <script>
+            nombres.splice(2, 2, "Cecilia", "Ramon");
+            document.write(nombres);      
+        </script>      
+    </div>
+
+    <div>
+        <script>
+            nombres.splice(1, 0, "Roberto", "Amalia");
+            document.write(nombres);
+        </script>
+    </div>
+
+    <div>
+        <script>
+            nombres.unshift("Marta");
+            document.write(nombres);
+        </script>
+    </div>
+
+    <div>
+        <script>
+            nombres.sort();
+            document.write(nombres);
+        </script>
+    </div>
+
+    <div>
+        <script>
+            nombres.sort();
+            nombres.reverse();
+            document.write(nombres);
+        </script>
+    </div
+    
+</body>
+</html>

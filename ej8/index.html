@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="width: auto; height: auto; text-align: center;">
+        <span style="color: red;">
+            <h1>Selectores DOM</h1>
+        </span>
+
+
+
+        <div style="width: auto; height: auto; text-align: center;">
+            <h1 id="texto1" onmouseover="color(this)">TEXTO 1</h1>
+        </div>
+        <hr />
+        <select name="colores" id="colores" onchange="alerta()" style="width: 100px;">
+            <option value="amarillo">Amarillo</option>
+            <option value="azul">Azul</option>
+            <option value="rojo">Rojo</option>
+        </select>
+    </div>
+
+    <hr />
+    <div style="width: auto; height: auto; text-align: center; padding-top: 10px;">
+        <select name="numeros" id="numeros" onchange="alerta2()" style="width: 100px;">
+            <option value="1">uno</option>
+            <option value="2">dos</option>
+            <option value="3">tres</option>
+        </select>
+    </div>
+    <hr />
+
+    <div style="width: auto; height: auto; text-align: center; padding-top: 10px;">
+        <textarea ondblclick="txtarea()" id="textarea">Esto es un ejercicio practico de programacion II</textarea>
+    </div>
+
+    <hr />
+
+    <div style="width: auto; height: auto; text-align: center; padding-top: 10px;">
+        <input type="number" name="valor1"> + <input type="number" name="valor2"> = <input type="number" name="resultado"><br>
+        <button onclick="sumar()" name="suma">Sumar</button>
+    </div>
+    <hr />
+
+    <div style="background-color: hsl(0, 88%, 47%); color: yellow;">
+        Esto es un DIV
+    </div>
+    <hr />
+</body>
+<script>
+    function color(a){
+        a.style.color= "red";
+    }
+    function alerta() {
+        alert(document.getElementById("colores").value);
+    }
+
+    function alerta2() {
+        alert(document.getElementById("numeros").value);
+    }
+
+    function txtarea(){
+        alert(document.getElementById("textarea").value);
+    }
+
+    function sumar(){
+        if(document.getElementsByName("valor1").value == ""){
+            alert ("Error");
+        }
+        else if(document.getElementsByName("valor2").value == ""){
+            alert("Error");
+        }
+        else {
+            var n1 = Number(document.getElementsByName("valor1")[0].value);
+            var n2 = Number(document.getElementsByName("valor2")[0].value);
+            var resultado = n1+n2;
+            document.getElementsByName("resultado")[0].value=resultado;
+        }
+            
+    }
+</script>
+</html>
