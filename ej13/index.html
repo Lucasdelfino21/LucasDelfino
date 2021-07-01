@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 13 mapa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+</head>
+<body>
+    <div style="width: auto; height: auto; text-align: center; padding-top: 10px;">
+        <label for="latitud">Ingresar latitud</label>
+		<input type="number" id="latitud"> 
+		<br><br>
+		<label for="longitud">Ingresar longitud</label>
+		<input type="number" id="longitud">
+		<br><br>
+		<button onclick="mapa()" id="mostrar">Mostrar en el mapa</button>
+		<br><br>
+	</div>
+	<div id="mapid" style="height: 500px; position: relative;"></div>
+	<script>
+		function mapa() {
+			var container = L.DomUtil.get("mapid");
+			if(container != null){container._leaflet_id = null;}
+			var lat = document.getElementById("latitud").value;
+			var log = document.getElementById("longitud").value;
+			if((lat>-90 || lat<90) && (log>-180 || log<180)){
+				var mymap = L.map('mapid').setView([lat,log], 13);
+				L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+				maxZoom: 18,
+				id: 'mapbox/streets-v11',
+				tileSize: 512,
+				zoomOffset: -1
+				}).addTo(mymap);	
+				L.marker([lat,log]).addTo(mymap).bindPopup("Esta es tu posicion").openPopup();
+			}else{
+				alert("latitud o longitud invalido");
+			}
+		}
+	</script>
+</body>
+</html>
